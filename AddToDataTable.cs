@@ -32,15 +32,10 @@ namespace ProductReviewManagement
             table.Rows.Add("8", "8", "good", "3.6", "True");
             table.Rows.Add("9", "9", "very good", "4.5", "True");
             table.Rows.Add("10", "3", "very bad", "0", "False");
-
-
-
-
-
-
-
-
             Display(table);
+
+            FunctionClass fun = new FunctionClass();
+            fun.retriveAverageRating(table);
 
         }
 

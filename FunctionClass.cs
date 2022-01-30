@@ -99,5 +99,24 @@ namespace ProductReviewManagement
 
 
         }
+
+        /// <summary>
+        /// Method is responsible to deal with datatables
+        /// It will give us Product description whose rating is avg or above avg
+        /// </summary>
+        /// <param name="tb"></param>
+        public void retriveAverageRating(DataTable tb)
+        {
+            var records = from table in tb.AsEnumerable()
+                          where table.Field<int>("Rating") >= 3
+                          select table;
+            Console.WriteLine("Records from Data table is ");
+            foreach (var ls in records)
+            {
+                Console.WriteLine("ProductId -- " + ls.Field<string>("ProductId") + "\n UserId --" + ls.Field<string>("UserId") + "\n Review " + ls.Field<string>("review") + "\n rating " + ls.Field<string>("Rating") + "\n Islike" + ls.Field<string>("Islike"));
+                Console.WriteLine("----------------------------------------------------");
+
+            }
+        }
     }
 }
