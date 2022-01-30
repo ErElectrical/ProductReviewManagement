@@ -36,7 +36,9 @@ namespace ProductReviewManagement
             }
 
             FunctionClass fun = new FunctionClass();
-            fun.TopRecords(productReview);
+           // fun.TopRecords(productReview);
+
+            fun.SelectRecords(productReview);
 
         }
     }
