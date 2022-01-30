@@ -16,12 +16,29 @@ namespace ProductReviewManagement
             //to store data in a grid form. 
 
             DataTable table = new DataTable();
-            table.Columns.Add("Id");
-            table.Columns.Add("ProductName");
+            table.Columns.Add("ProductId");
+            table.Columns.Add("UserId");
+            table.Columns.Add("Review");
+            table.Columns.Add("Rating");
+            table.Columns.Add("Islike");
 
-            table.Rows.Add("1", "toffe");
-            table.Rows.Add("2", "chai");
-            table.Rows.Add("3", "Coffee");
+            table.Rows.Add("1", "1","average","3","True");
+            table.Rows.Add("2", "3","good","3.5","True");
+            table.Rows.Add("3", "12","Bad","1","False");
+            table.Rows.Add("4", "4", "Worse", "0", "False");
+            table.Rows.Add("5", "5", "very good", "4", "True");
+            table.Rows.Add("6", "6", "Best", "5", "True");
+            table.Rows.Add("7", "7", "avg", "2.7", "False");
+            table.Rows.Add("8", "8", "good", "3.6", "True");
+            table.Rows.Add("9", "9", "very good", "4.5", "True");
+            table.Rows.Add("10", "3", "very bad", "0", "False");
+
+
+
+
+
+
+
 
             Display(table);
 
@@ -35,7 +52,18 @@ namespace ProductReviewManagement
             //as well as providing a single querying interface for different types of data sources.
 
 
-            var productNames = from products in table.AsEnumerable() select products.Field<string>("ProductName");
+            foreach(DataRow dr in table.Rows)
+            {
+                string productId = dr.Field <string>("ProductId");
+                string Usid = dr.Field<string>("UserId");
+                string review = dr.Field<string>("Review");
+                string rating = dr.Field<string>("Rating");
+                string islike = dr.Field<string>("Islike");
+
+                Console.WriteLine("Products are : ");
+
+                Console.WriteLine("{0} {1} {2} {3} {4} ", productId, Usid, review, rating, islike);
+            }
 
             //Query syntax starts with a From clause followed by a Range variable.
             //The From clause is structured like "From rangeVariableName in IEnumerablecollection".
@@ -48,11 +76,8 @@ namespace ProductReviewManagement
 
             //LINQ query syntax always ends with a Select or Group clause. The Select clause is used to shape the data.
 
-            Console.WriteLine("Products are : ");
-            foreach(var pro in productNames)
-            {
-                Console.WriteLine(pro);
-            }
+           
+          
         }
         
         
