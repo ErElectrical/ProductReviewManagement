@@ -45,6 +45,11 @@ namespace ProductReviewManagement
             }
         }
 
+        /// <summary>
+        /// Method count the number of ProductId we have
+        /// and how many Products are there in a single ProductId
+        /// </summary>
+        /// <param name="review"></param>
         public void RetriveCountOfRecords(List<ProductReviewModel> review)
         {
             var records = review.GroupBy(x => x.ProductId).Select(x => new { productId = x.Key, Count = x.Count() });
@@ -54,6 +59,23 @@ namespace ProductReviewManagement
                 Console.WriteLine(ls.productId + " ---- " + ls.Count);
                 Console.WriteLine("---------------------------------");
             }
+        }
+
+        /// <summary>
+        /// retrirve productId with their rating
+        /// </summary>
+        /// <param name="review"></param>
+        public void RetriveProductIdAndReview(List<ProductReviewModel> review)
+        {
+            var records = from products in review
+                          select products;
+            Console.WriteLine("ProductId with their review is ");
+            foreach(var ls in records)
+            {
+                Console.WriteLine(ls.ProductId + "--------" + ls.review);
+                Console.WriteLine("-----------------------------");
+            }
+                          
         }
     }
 }
