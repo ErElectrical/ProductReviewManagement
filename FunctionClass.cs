@@ -77,5 +77,27 @@ namespace ProductReviewManagement
             }
                           
         }
+        /// <summary>
+        /// Method skip top 5 records and display the below records
+        /// </summary>
+        /// <param name="review"></param>
+        public void SkipTopRecords(List<ProductReviewModel> review)
+        {
+            //The Skip operator bypasses a specified number of contiguous rows from a sequence/table and returns the remaining table.
+            //It can skip rows from the top or can be for a certain criteria,
+            //in other words it can also skip rows depending on a certain criteria.
+            //It works like NOT IN in SQL.
+
+            var records = (from products in review
+                           select products).Skip(5);
+            Console.WriteLine("Records skipping top 5 records ");
+            foreach (var ls in records)
+            {
+                Console.WriteLine("ProductId -- " + ls.ProductId + "\n UserId --" + ls.UserId + "\n Review " + ls.review + "\n rating " + ls.Rating + "\n Islike" + ls.Islike);
+                Console.WriteLine("----------------------------------------------------");
+            }
+
+
+        }
     }
 }
