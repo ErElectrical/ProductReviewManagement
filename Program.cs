@@ -43,7 +43,9 @@ namespace ProductReviewManagement
             //
             //fun.RetriveCountOfRecords(productReview);
 
-            fun.RetriveProductIdAndReview(productReview);
+            //   fun.RetriveProductIdAndReview(productReview);
+
+            fun.SkipTopRecords(productReview);
 
         }
     }
