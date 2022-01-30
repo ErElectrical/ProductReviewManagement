@@ -118,5 +118,47 @@ namespace ProductReviewManagement
 
             }
         }
+
+        /// <summary>
+        /// Method is responsible to deal with datatable
+        /// it will retrive data having good review with it.
+        /// </summary>
+        /// <param name="table"></param>
+
+        public void RetriveReviewGood(DataTable table)
+        {
+            var records = from tb in table.AsEnumerable()
+                          where tb.Field<string>("Review") == "Good"
+                          select tb;
+            Console.WriteLine("retrive data having review Good ");
+            foreach (var ls in records)
+            {
+                Console.WriteLine("ProductId -- " + ls.Field<string>("ProductId") + "\n UserId --" + ls.Field<string>("UserId") + "\n Review " + ls.Field<string>("review") + "\n rating " + ls.Field<string>("Rating") + "\n Islike" + ls.Field<string>("Islike"));
+                Console.WriteLine("----------------------------------------------------");
+
+            }
+
+        }
+        /// <summary>
+        /// 
+        /// Method deal with userid 10
+        /// retrive data in descending order based on the rating given by the end user
+        /// </summary>
+        /// <param name="table"></param>
+        public void RetriveDataForParticulrUser(DataTable table)
+        {
+            var records = from tb in table.AsEnumerable()
+                          orderby tb.Field<string>("Rating") descending
+                          where tb.Field<string>("UserId") == "10"
+                          select tb;
+            Console.WriteLine("retrive data For userId 10");
+            foreach (var ls in records)
+            {
+                Console.WriteLine("ProductId -- " + ls.Field<string>("ProductId") + "\n UserId --" + ls.Field<string>("UserId") + "\n Review " + ls.Field<string>("review") + "\n rating " + ls.Field<string>("Rating") + "\n Islike" + ls.Field<string>("Islike"));
+                Console.WriteLine("----------------------------------------------------");
+
+            }
+
+        }
     }
 }
