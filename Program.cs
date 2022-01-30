@@ -35,6 +35,9 @@ namespace ProductReviewManagement
                 Console.WriteLine();
             }
 
+            FunctionClass fun = new FunctionClass();
+            fun.TopRecords(productReview);
+
         }
     }
 
